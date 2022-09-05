@@ -2,7 +2,15 @@
   "name": "@el173/react-native-smooch",
   "version": "1.2.3",
   "description": "A React Native client for smooch.io",
-  "main": "./lib/SmoochClient.js",
+  "main": "./lib/SmoochClient",
+  "react-native": "./lib/SmoochClient",
+  "src": "./lib/SmoochClient",
+  "type": "module",
+  "files": [
+    "lib",
+    "android",
+    "ios"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/el173/react-native-smooch.git"
@@ -20,5 +28,12 @@
     "bot",
     "chat bot",
     "smooch chat bot"
-  ]
+  ],
+  "devDependencies": {
+    "@types/react-native": "0.66.15",
+    "react-native": "0.67.2"
+  },
+  "peerDependencies": {
+    "react-native": "*"
+  }
 }
