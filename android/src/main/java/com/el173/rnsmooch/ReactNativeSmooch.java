@@ -19,6 +19,7 @@ import io.smooch.core.Smooch;
 import io.smooch.core.SmoochCallback;
 import io.smooch.core.User;
 import io.smooch.ui.ConversationActivity;
+import io.smooch.features.conversationlist.ConversationListActivity;
 
 public class ReactNativeSmooch extends ReactContextBaseJavaModule {
   @Override
@@ -35,14 +36,14 @@ public class ReactNativeSmooch extends ReactContextBaseJavaModule {
     Smooch.login(userId, jwt, new SmoochCallback() {
       @Override
       public void run(Response response) {
-      if (promise != null) {
-        if (response.getError() != null) {
-          promise.reject("" + response.getStatus(), response.getError());
-          return;
-        }
+        if (promise != null) {
+          if (response.getError() != null) {
+            promise.reject("" + response.getStatus(), response.getError());
+            return;
+          }
 
-        promise.resolve(null);
-      }
+          promise.resolve(null);
+        }
       }
     });
   }
@@ -52,12 +53,12 @@ public class ReactNativeSmooch extends ReactContextBaseJavaModule {
     Smooch.logout(new SmoochCallback() {
       @Override
       public void run(Response response) {
-      if (response.getError() != null) {
-        promise.reject("" + response.getStatus(), response.getError());
-        return;
-      }
+        if (response.getError() != null) {
+          promise.reject("" + response.getStatus(), response.getError());
+          return;
+        }
 
-      promise.resolve(null);
+        promise.resolve(null);
       }
     });
   }
@@ -65,12 +66,17 @@ public class ReactNativeSmooch extends ReactContextBaseJavaModule {
   @ReactMethod
   public void show() {
 //    ConversationActivity.show(getReactApplicationContext(), Intent.FLAG_ACTIVITY_NEW_TASK);
-     ConversationActivity.builder().withFlags(Intent.FLAG_ACTIVITY_NEW_TASK).show(getReactApplicationContext());
+    ConversationActivity.builder().withFlags(Intent.FLAG_ACTIVITY_NEW_TASK).show(getReactApplicationContext());
+  }
+
+  @ReactMethod
+  public void showConversationList() {
+    ConversationListActivity.builder().withFlags(Intent.FLAG_ACTIVITY_NEW_TASK).show(getReactApplicationContext());
   }
 
   @ReactMethod
   public void showWithStartingText(String startingText) {
-     ConversationActivity.builder().withFlags(Intent.FLAG_ACTIVITY_NEW_TASK).withStartingText(startingText);
+    ConversationActivity.builder().withFlags(Intent.FLAG_ACTIVITY_NEW_TASK).withStartingText(startingText);
   }
 
   @ReactMethod
@@ -109,7 +115,7 @@ public class ReactNativeSmooch extends ReactContextBaseJavaModule {
 //    try {
 //      HashMap<String,Object> map = remoteMessage.toHashMap();
 //      HashMap<String,String> newMap =new HashMap<String,String>();
-//
+  //
 //      for (Map.Entry<String, Object> entry : map.entrySet()) {
 //        if(entry.getValue() instanceof String){
 //          newMap.put(entry.getKey(), entry.getValue().toString());

@@ -43,6 +43,6 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.facebook.react:react-native:+'
-    implementation 'io.smooch:core:9.0.1'
-    implementation 'io.smooch:ui:9.0.1'
+    implementation 'io.smooch:core:9.1.0'
+    implementation 'io.smooch:ui:9.1.0'
 }
