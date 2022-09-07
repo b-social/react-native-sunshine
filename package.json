@@ -11,6 +11,11 @@
     "android",
     "ios"
   ],
+  "scripts": {
+    "preinstall": "npm install --ignore-scripts",
+    "install": "rm -rf ./lib && tsc",
+    "postinstall": "rm -rf ./node_modules"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/el173/react-native-smooch.git"
@@ -35,5 +40,8 @@
   },
   "peerDependencies": {
     "react-native": "*"
+  },
+  "dependencies": {
+    "typescript": "^4.8.2"
   }
 }

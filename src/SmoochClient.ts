@@ -1,6 +1,4 @@
-'use strict';
-
-var { NativeModules, Platform } = require('react-native');
+import { NativeModules, Platform }  from 'react-native';
 
 const LINKING_ERROR =
     `The package 'react-native-sunshine' doesn't seem to be linked. Make sure: \n\n` +
@@ -25,10 +23,10 @@ const showConversationList = async () => await SmoochManager.showConversationLis
 
 const showWithStartingMessage = async () => await SmoochManager.showWithStartingMessage();
 
-const login = async (userId, token) => await SmoochManager.login(userId, token);
+const login = async (userId: string, token: string) => await SmoochManager.login(userId, token);
 
 const logout = async () => await SmoochManager.logout();
 
-const setFirebaseCloudMessagingToken = async (token) => await SmoochManager.setFirebaseCloudMessagingToken(token);
+const setFirebaseCloudMessagingToken = async (token: string) => await SmoochManager.setFirebaseCloudMessagingToken(token);
 
-module.exports = { show, showConversationList, showWithStartingMessage, login, logout, setFirebaseCloudMessagingToken, SmoochManager };
+export { show, showConversationList, showWithStartingMessage, login, logout, setFirebaseCloudMessagingToken, SmoochManager };
