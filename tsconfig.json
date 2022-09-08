@@ -1,14 +1,23 @@
 {
-    "compilerOptions": {
-      "target": "esnext",
-      "lib": ["esnext"],
-      "module": "esnext",
-      "moduleResolution": "node",
-      "declaration": true,
-      "outDir": "./lib",
-      "strict": true,
-      "skipLibCheck": true
-    },
-    "include": ["src"],
-    "exclude": ["node_modules", "**/__tests__/*"]
-  }
+  "extends": "./tsconfig-strict.json",
+  "compilerOptions": {
+    "outDir": "./lib",
+    "allowJs": false,
+    "target": "esnext",
+    "module": "commonjs",
+    "jsx": "react-native",
+    "declaration": true,
+    "skipLibCheck": true,
+    "types": [
+      "react",
+      "react-native"
+    ]
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/__tests__/*"
+  ]
+}
