@@ -2,14 +2,18 @@
   "name": "@el173/react-native-smooch",
   "version": "1.2.3",
   "description": "A React Native client for smooch.io",
-  "main": "./lib/SmoochClient",
-  "react-native": "./lib/SmoochClient",
-  "src": "./lib/SmoochClient",
+  "main": "lib/SmoochClient",
+  "module": "lib/module/index",
+  "types": "lib/SmoochClient.d.ts",
+  "react-native": "src/SmoochClient",
+  "source": "src/SmoochClient",
   "type": "module",
   "files": [
+    "src",
     "lib",
     "android",
-    "ios"
+    "ios",
+    "react-native-smooch.podspec"
   ],
   "scripts": {
     "preinstall": "npm install --ignore-scripts",
