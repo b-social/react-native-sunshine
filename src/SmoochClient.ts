@@ -21,7 +21,7 @@ const show = async () => await SmoochManager.show();
 
 const showConversationList = async () => await SmoochManager.showConversationList();
 
-const showWithStartingMessage = async () => await SmoochManager.showWithStartingMessage();
+const showWithStartingMessage = async () => await SmoochManager.showWithStartingText();
 
 const login = async (userId: string, token: string) => await SmoochManager.login(userId, token);
 
