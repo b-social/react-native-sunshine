@@ -1,4 +1,4 @@
-import { NativeModules, Platform }  from 'react-native';
+import { NativeModules, Platform } from 'react-native';
 
 const LINKING_ERROR =
     `The package 'react-native-sunshine' doesn't seem to be linked. Make sure: \n\n` +
@@ -21,7 +21,7 @@ const show = async () => await SmoochManager.show();
 
 const showConversationList = async () => await SmoochManager.showConversationList();
 
-const showWithStartingMessage = async () => await SmoochManager.showWithStartingText();
+const showWithStartingMessage = async (text: string) => await SmoochManager.showWithStartingText(text);
 
 const login = async (userId: string, token: string) => await SmoochManager.login(userId, token);
 
