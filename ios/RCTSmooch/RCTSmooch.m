@@ -83,7 +83,7 @@ RCT_EXPORT_METHOD(logout:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRej
 RCT_EXPORT_METHOD(setUserProperties:(NSDictionary*)options) {
     NSLog(@"Smooch setUserProperties with %@", options);
     
-    [[SKTUser currentUser] addProperties:options];
+    [[SKTUser currentUser] addMetadata:options];
 };
 
 RCT_EXPORT_METHOD(getUserId:(RCTPromiseResolveBlock)resolve
