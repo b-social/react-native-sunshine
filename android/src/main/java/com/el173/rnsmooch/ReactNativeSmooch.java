@@ -65,8 +65,18 @@ public class ReactNativeSmooch extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void show() {
-//    ConversationActivity.show(getReactApplicationContext(), Intent.FLAG_ACTIVITY_NEW_TASK);
+    // ConversationActivity.show(getReactApplicationContext(),
+    // Intent.FLAG_ACTIVITY_NEW_TASK);
     ConversationActivity.builder().withFlags(Intent.FLAG_ACTIVITY_NEW_TASK).show(getReactApplicationContext());
+  }
+
+  @ReactMethod
+  public void setCurrentConversationDetails(String name, String description) {
+    io.smooch.core.Conversation conversation = Smooch.getConversation();
+    if (conversation != null){
+      String id = conversation.getId();
+      Smooch.updateConversationById(id, name, description, null, null, null);
+    }
   }
 
   @ReactMethod
@@ -76,7 +86,8 @@ public class ReactNativeSmooch extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void showWithStartingText(String startingText) {
-    ConversationActivity.builder().withFlags(Intent.FLAG_ACTIVITY_NEW_TASK).withStartingText(startingText).show(getReactApplicationContext());
+    ConversationActivity.builder().withFlags(Intent.FLAG_ACTIVITY_NEW_TASK).withStartingText(startingText)
+        .show(getReactApplicationContext());
   }
 
   @ReactMethod
@@ -110,24 +121,26 @@ public class ReactNativeSmooch extends ReactContextBaseJavaModule {
     User.getCurrentUser().addMetadata(getUserProperties(properties));
   }
 
-//  @ReactMethod
-//  public void triggerSmoochNotification(ReadableMap remoteMessage, Promise promise) {
-//    try {
-//      HashMap<String,Object> map = remoteMessage.toHashMap();
-//      HashMap<String,String> newMap =new HashMap<String,String>();
+  // @ReactMethod
+  // public void triggerSmoochNotification(ReadableMap remoteMessage, Promise
+  // promise) {
+  // try {
+  // HashMap<String,Object> map = remoteMessage.toHashMap();
+  // HashMap<String,String> newMap =new HashMap<String,String>();
   //
-//      for (Map.Entry<String, Object> entry : map.entrySet()) {
-//        if(entry.getValue() instanceof String){
-//          newMap.put(entry.getKey(), entry.getValue().toString());
-//        }
-//      }
-//      Log.v("SMOOCH", String.valueOf(newMap));
-//      FcmService.triggerSmoochNotification(newMap, getReactApplicationContext());
-//      promise.resolve(true);
-//    } catch (Exception e) {
-//      promise.resolve("ERROR While parsing smooch notification : " + e.getLocalizedMessage());
-//    }
-//  }
+  // for (Map.Entry<String, Object> entry : map.entrySet()) {
+  // if(entry.getValue() instanceof String){
+  // newMap.put(entry.getKey(), entry.getValue().toString());
+  // }
+  // }
+  // Log.v("SMOOCH", String.valueOf(newMap));
+  // FcmService.triggerSmoochNotification(newMap, getReactApplicationContext());
+  // promise.resolve(true);
+  // } catch (Exception e) {
+  // promise.resolve("ERROR While parsing smooch notification : " +
+  // e.getLocalizedMessage());
+  // }
+  // }
 
   @ReactMethod
   public void setFirebaseCloudMessagingToken(String fcmToken) {

@@ -13,6 +13,15 @@ RCT_EXPORT_METHOD(show) {
     });
 };
 
+RCT_EXPORT_METHOD(setCurrentConversationDetails:(NSString*)conversationId (NSString*)name (NSString*)description) {
+    NSLog(@"Smooch Set Conversation Details");
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        SKTConversation conversation = [Smooch conversation];
+        [Smooch updateConversationById:conversationId withName:name description:description iconUrl:NULL metadata:NULL completionHandler:NULL];
+    });
+};
+
 RCT_EXPORT_METHOD(showConversationList) {
     NSLog(@"Smooch Show Convesation List");
     
