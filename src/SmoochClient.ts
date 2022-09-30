@@ -27,6 +27,10 @@ const login = async (userId: string, token: string) => await SmoochManager.login
 
 const logout = async () => await SmoochManager.logout();
 
+const setFirstName = async (text: string) => await SmoochManager.setFirstName(text);
+
+const setLastName = async (text: string) => await SmoochManager.setLastName(text);
+
 const setFirebaseCloudMessagingToken = async (token: string) => await SmoochManager.setFirebaseCloudMessagingToken(token);
 
-export { show, showConversationList, showWithStartingMessage, login, logout, setFirebaseCloudMessagingToken, SmoochManager };
+export { show, showConversationList, showWithStartingMessage, login, logout, setFirstName, setLastName, setFirebaseCloudMessagingToken, SmoochManager };
