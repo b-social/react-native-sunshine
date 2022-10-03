@@ -13,12 +13,23 @@ RCT_EXPORT_METHOD(show) {
     });
 };
 
-RCT_EXPORT_METHOD(setCurrentConversationDetails:(NSString*)conversationId (NSString*)name (NSString*)description) {
+RCT_EXPORT_METHOD(setCurrentConversationDetails:(NSString*)name description:(NSString*)description resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSLog(@"Smooch Set Conversation Details");
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        SKTConversation conversation = [Smooch conversation];
-        [Smooch updateConversationById:conversationId withName:name description:description iconUrl:NULL metadata:NULL completionHandler:NULL];
+        SKTConversation* conversation = [Smooch conversation];
+        NSString *conversationId = conversation.conversationId;
+        [Smooch updateConversationById:conversationId withName:name description:description iconUrl:NULL metadata:NULL completionHandler:^(NSError * _Nullable error, NSDictionary * _Nullable userInfo) {
+            if (error) {
+                reject(
+                       userInfo[SKTErrorCodeIdentifier],
+                       userInfo[SKTErrorDescriptionIdentifier],
+                       error);
+            }
+            else {
+                resolve(userInfo);
+            }
+        }];
     });
 };
 

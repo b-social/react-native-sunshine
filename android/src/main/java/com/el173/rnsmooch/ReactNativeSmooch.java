@@ -71,11 +71,21 @@ public class ReactNativeSmooch extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void setCurrentConversationDetails(String name, String description) {
+  public void setCurrentConversationDetails(String name, String description, final Promise promise) {
     io.smooch.core.Conversation conversation = Smooch.getConversation();
-    if (conversation != null){
+    if (conversation != null) {
       String id = conversation.getId();
-      Smooch.updateConversationById(id, name, description, null, null, null);
+      Smooch.updateConversationById(id, name, description, null, null, new SmoochCallback() {
+        @Override
+        public void run(Response response)  {
+          if (response.getError() != null) {
+            promise.reject("" + response.getStatus(), response.getError());
+            return;
+          }
+  
+          promise.resolve(null);
+        }
+      });
     }
   }
 
