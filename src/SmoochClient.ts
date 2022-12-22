@@ -23,6 +23,8 @@ const showConversationList = async () => await SmoochManager.showConversationLis
 
 const showWithStartingMessage = async (text: string) => await SmoochManager.showWithStartingText(text);
 
+const close = async () => await SmoochManager.close();
+
 const setCurrentConversationDetails = async (name: string, description: string) => await SmoochManager.setCurrentConversationDetails(name, description)
 
 const login = async (userId: string, token: string) => await SmoochManager.login(userId, token);
@@ -35,4 +37,4 @@ const setLastName = async (text: string) => await SmoochManager.setLastName(text
 
 const setFirebaseCloudMessagingToken = async (token: string) => await SmoochManager.setFirebaseCloudMessagingToken(token);
 
-export { show, showConversationList, showWithStartingMessage, setCurrentConversationDetails, login, logout, setFirstName, setLastName, setFirebaseCloudMessagingToken, SmoochManager };
+export { show, showConversationList, close, showWithStartingMessage, setCurrentConversationDetails, login, logout, setFirstName, setLastName, setFirebaseCloudMessagingToken, SmoochManager };
