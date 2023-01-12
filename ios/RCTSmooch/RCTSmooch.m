@@ -13,6 +13,16 @@ RCT_EXPORT_METHOD(show) {
     });
 };
 
+RCT_EXPORT_METHOD(showConversationById:(NSString*)conversationId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    NSLog(@"Smooch Show Conversation By ID");
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [Smooch showConversationWithId:conversationId];
+    });
+
+    resolve(true);
+};
+
 RCT_EXPORT_METHOD(setCurrentConversationDetails:(NSString*)name description:(NSString*)description resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSLog(@"Smooch Set Conversation Details");
     

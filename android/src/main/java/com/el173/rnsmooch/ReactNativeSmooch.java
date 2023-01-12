@@ -71,6 +71,26 @@ public class ReactNativeSmooch extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void showConversationById(String conversationId, final Promise promise) {
+    this.show();
+    
+    Smooch.loadConversation(conversationId, new SmoochCallback() {
+      @Override
+      public void run(Response response)  {
+        if (response.getError() != null) {
+          promise.reject("" + response.getStatus(), response.getError());
+          return;
+        }
+
+        // ConversationActivity.show(getReactApplicationContext(),
+        // Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        promise.resolve(true);
+      }
+    });
+  }
+
+  @ReactMethod
   public void setCurrentConversationDetails(String name, String description, final Promise promise) {
     io.smooch.core.Conversation conversation = Smooch.getConversation();
     if (conversation != null) {

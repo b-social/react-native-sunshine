@@ -19,6 +19,8 @@ const SmoochManager = NativeModules.SmoochManager
 
 const show = async () => await SmoochManager.show();
 
+const showConversationById = async (conversationId: string) => await SmoochManager.showConversationById(conversationId);
+
 const showConversationList = async () => await SmoochManager.showConversationList();
 
 const showWithStartingMessage = async (text: string) => await SmoochManager.showWithStartingText(text);
@@ -37,4 +39,17 @@ const setLastName = async (text: string) => await SmoochManager.setLastName(text
 
 const setFirebaseCloudMessagingToken = async (token: string) => await SmoochManager.setFirebaseCloudMessagingToken(token);
 
-export { show, showConversationList, close, showWithStartingMessage, setCurrentConversationDetails, login, logout, setFirstName, setLastName, setFirebaseCloudMessagingToken, SmoochManager };
+export {
+    show,
+    showConversationById,
+    showConversationList,
+    close,
+    showWithStartingMessage,
+    setCurrentConversationDetails,
+    login,
+    logout,
+    setFirstName,
+    setLastName,
+    setFirebaseCloudMessagingToken,
+    SmoochManager
+};
