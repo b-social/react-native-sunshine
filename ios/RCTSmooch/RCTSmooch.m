@@ -20,7 +20,7 @@ RCT_EXPORT_METHOD(showConversationById:(NSString*)conversationId resolver:(RCTPr
         [Smooch showConversationWithId:conversationId];
     });
 
-    resolve(true);
+    resolve(nil);
 };
 
 RCT_EXPORT_METHOD(setCurrentConversationDetails:(NSString*)name description:(NSString*)description resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
